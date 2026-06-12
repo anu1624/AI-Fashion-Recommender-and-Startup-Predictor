@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Review</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('/static/images/review.jpg');
+
+background-size:cover;
+background-position:center;
+color:white;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:15px;
+width:400px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+animation:fadeIn 1.5s;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+/* STARS */
+
+.stars span{
+font-size:35px;
+cursor:pointer;
+color:gray;
+transition:0.3s;
+}
+
+.stars span:hover{
+transform:scale(1.2);
+}
+
+.active{
+color:gold !important;
+}
+
+/* TEXTAREA */
+
+textarea{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:20px;
+resize:none;
+}
+
+/* BUTTON */
+
+button{
+margin-top:20px;
+padding:12px;
+width:100%;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff6a00,#ee0979);
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* BACK LINK */
+
+a{
+display:block;
+margin-top:15px;
+color:#00f2fe;
+text-decoration:none;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>⭐ Give Your Feedback</h2>
+
+<form method="POST">
+
+<!-- STARS -->
+<div class="stars">
+    <span data-value="1">⭐</span>
+    <span data-value="2">⭐</span>
+    <span data-value="3">⭐</span>
+    <span data-value="4">⭐</span>
+    <span data-value="5">⭐</span>
+</div>
+
+<input type="hidden" name="rating" id="rating" required>
+
+<!-- COMMENT -->
+<textarea name="comment" rows="4" placeholder="Write your experience..."></textarea>
+
+<!-- BUTTON -->
+<button type="submit">Submit Review</button>
+
+</form>
+
+<a href="/dashboard">⬅ Back to Dashboard</a>
+
+</div>
+
+<script>
+
+// WAIT until page loads
+document.addEventListener("DOMContentLoaded", function(){
+
+    const stars = document.querySelectorAll(".stars span");
+    const ratingInput = document.getElementById("rating");
+
+    stars.forEach((star, index) => {
+
+        star.addEventListener("click", function(){
+
+            let value = index + 1;
+            ratingInput.value = value;
+
+            stars.forEach(s => s.classList.remove("active"));
+
+            for(let i = 0; i < value; i++){
+                stars[i].classList.add("active");
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

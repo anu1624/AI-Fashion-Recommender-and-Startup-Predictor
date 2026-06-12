@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Startup Success Predictor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('/static/images/startup.jpg');
+
+background-size:cover;
+background-position:center;
+color:white;
+
+}
+
+/* HEADER */
+
+.header{
+text-align:center;
+padding:60px 20px;
+animation:fadeIn 2s;
+}
+
+.header h1{
+font-size:50px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.header p{
+margin-top:15px;
+font-size:18px;
+}
+
+/* MAIN SECTION */
+
+.main{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:60px 10%;
+}
+
+/* FORM CARD */
+
+.form-card{
+
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:15px;
+width:500px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.4s;
+
+}
+
+.form-card:hover{
+transform:scale(1.02);
+}
+
+.form-card h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* INPUTS */
+
+label{
+display:block;
+margin-top:15px;
+}
+
+select{
+width:100%;
+padding:10px;
+margin-top:5px;
+border:none;
+border-radius:8px;
+}
+
+/* BUTTON */
+
+button{
+
+margin-top:25px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff6a00,#ee0979);
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* FEATURES */
+
+.features{
+
+padding:80px 10%;
+text-align:center;
+
+}
+
+.features h2{
+font-size:40px;
+margin-bottom:40px;
+}
+
+.feature-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+
+}
+
+.feature-box{
+
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:15px;
+transition:0.4s;
+
+}
+
+.feature-box:hover{
+
+transform:scale(1.05);
+background:rgba(255,255,255,0.15);
+
+}
+
+/* FOOTER */
+
+footer{
+margin-top:80px;
+padding:20px;
+background:black;
+text-align:center;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<section class="header">
+
+<h1>AI Startup Success Predictor</h1>
+
+<p>
+Analyze startup characteristics and predict the probability of business success using Machine Learning.
+</p>
+
+</section>
+
+
+<!-- FORM -->
+
+<section class="main">
+
+<div class="form-card">
+
+<h2>Startup Information</h2>
+
+<form action="/predict" method="POST">
+
+<label>Funding Level</label>
+<select name="funding">
+<option value="1">Low Funding</option>
+<option value="2">Medium Funding</option>
+<option value="3">High Funding</option>
+</select>
+
+<label>Team Experience</label>
+<select name="experience">
+<option value="1">Beginner Team</option>
+<option value="2">Moderate Experience</option>
+<option value="3">Highly Experienced</option>
+</select>
+
+<label>Market Size</label>
+<select name="market_size">
+<option value="1">Small Market</option>
+<option value="2">Medium Market</option>
+<option value="3">Large Market</option>
+</select>
+
+<label>Product Innovation</label>
+<select name="innovation">
+<option value="1">Low Innovation</option>
+<option value="2">Moderate Innovation</option>
+<option value="3">Highly Innovative</option>
+</select>
+
+<button type="submit">Predict Startup Success</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>How This AI Helps Entrepreneurs</h2>
+
+<div class="feature-grid">
+
+<div class="feature-box">
+<h3>📊 Data Driven Decisions</h3>
+<p>Helps founders analyze startup potential before investing resources.</p>
+</div>
+
+<div class="feature-box">
+<h3>🚀 Business Insights</h3>
+<p>Uses machine learning to evaluate business success probability.</p>
+</div>
+
+<div class="feature-box">
+<h3>💡 Strategic Planning</h3>
+<p>Allows entrepreneurs to improve their strategy using AI feedback.</p>
+</div>
+
+<div class="feature-box">
+<h3>📈 Risk Evaluation</h3>
+<p>Predicts potential success or failure based on startup features.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>AI Startup Success Predictor | Machine Learning Project</p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Fashion Recommendation Results</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+padding:40px;
+
+background:
+linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+url('/static/images/style.jpg');
+
+background-size:cover;
+background-position:center;
+color:white;
+}
+
+/* HEADER */
+
+.header{
+text-align:center;
+padding:60px 20px;
+animation:fadeIn 2s;
+}
+
+.header h1{
+font-size:50px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.header p{
+margin-top:15px;
+font-size:18px;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+padding:60px 10%;
+}
+
+/* UPLOADED IMAGE */
+
+.uploaded-section{
+text-align:center;
+margin-bottom:60px;
+}
+
+.uploaded-img{
+
+width:320px;
+height:320px;
+border-radius:15px;
+object-fit:cover;
+margin-top:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+}
+
+/* RECOMMENDATIONS GRID */
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-top:40px;
+
+}
+
+/* CARD */
+
+.card{
+
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border-radius:15px;
+padding:20px;
+text-align:center;
+transition:0.4s;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+}
+
+.card:hover{
+
+transform:translateY(-10px) scale(1.05);
+
+}
+
+.card img{
+
+width:100%;
+height:250px;
+border-radius:10px;
+object-fit:cover;
+
+}
+
+.card p{
+
+margin-top:10px;
+font-size:16px;
+
+}
+
+/* BUTTONS */
+
+.btn{
+
+margin-top:40px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff6a00,#ee0979);
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+.btn:hover{
+
+transform:scale(1.1);
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+
+}
+
+.buttons{
+
+text-align:center;
+
+}
+
+/* FOOTER */
+
+footer{
+
+margin-top:80px;
+padding:20px;
+background:black;
+text-align:center;
+
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<section class="header">
+
+<h1>AI Fashion Recommendations</h1>
+
+<p>Our AI analyzed your uploaded image and found similar outfit styles.</p>
+
+</section>
+
+
+<div class="container">
+
+<!-- UPLOADED IMAGE -->
+
+<div class="uploaded-section">
+
+<h2>Your Uploaded Image</h2>
+
+{% if uploaded_image %}
+<img src="{{ url_for('static', filename=uploaded_image) }}" class="uploaded-img">
+{% endif %}
+
+</div>
+
+
+<!-- RECOMMENDATIONS -->
+
+<h2 style="text-align:center;">Recommended Outfits</h2>
+
+<div class="grid">
+
+{% for item in recommendations %}
+
+<div class="card">
+
+<img src="{{ url_for('static', filename=item.image) }}">
+
+<p>Similarity: {{ item.score }}%</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<a href="/fashion">
+<button class="btn">Try Another Image</button>
+</a>
+
+<br><br>
+
+<a href="/">
+<button class="btn">Back to Dashboard</button>
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>AI Fashion Recommendation System | Machine Learning Project</p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Fashion Recommendation System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('/static/images/fashion.jpg');
+
+background-size:cover;
+background-position:center;
+color:white;
+
+}
+
+/* HEADER */
+
+.header{
+text-align:center;
+padding:60px 20px;
+animation:fadeIn 2s;
+}
+
+.header h1{
+font-size:50px;
+background:linear-gradient(45deg,#00f2fe,#4facfe);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.header p{
+margin-top:15px;
+font-size:18px;
+}
+
+/* MAIN SECTION */
+
+.main{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:60px;
+padding:60px 10%;
+flex-wrap:wrap;
+}
+
+/* UPLOAD CARD */
+
+.upload-card{
+
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:15px;
+width:400px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.4s;
+
+}
+
+.upload-card:hover{
+transform:scale(1.05);
+}
+
+/* FILE INPUT */
+
+input[type=file]{
+margin-top:20px;
+}
+
+button{
+
+margin-top:25px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff6a00,#ee0979);
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* IMAGE PREVIEW */
+
+.preview{
+
+width:300px;
+height:300px;
+margin-top:20px;
+border-radius:10px;
+object-fit:cover;
+display:none;
+
+}
+
+/* INFO SECTION */
+
+.info-section{
+
+padding:80px 10%;
+text-align:center;
+
+}
+
+.info-section h2{
+
+font-size:40px;
+margin-bottom:40px;
+
+}
+
+.features{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+
+}
+
+.feature-box{
+
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:15px;
+transition:0.4s;
+
+}
+
+.feature-box:hover{
+
+transform:scale(1.05);
+background:rgba(255,255,255,0.15);
+
+}
+
+/* FOOTER */
+
+footer{
+
+margin-top:80px;
+padding:20px;
+background:black;
+text-align:center;
+
+}
+
+@keyframes fadeIn{
+
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<section class="header">
+
+<h1>AI Fashion Recommendation System</h1>
+
+<p>
+Upload a fashion image and our AI system will recommend similar outfit styles.
+</p>
+
+</section>
+
+<!-- MAIN -->
+
+<section class="main">
+
+<div class="upload-card">
+
+<h2>Upload Fashion Image</h2>
+
+<form action="/recommend" method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
+
+<br>
+
+<img id="preview" class="preview">
+
+<br>
+
+<button type="submit">Get Recommendations</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="info-section">
+
+<h2>Why Use This System?</h2>
+
+<div class="features">
+
+<div class="feature-box">
+
+<h3>👗 Smart Outfit Matching</h3>
+<p>AI analyzes clothing styles and recommends similar outfits.</p>
+
+</div>
+
+<div class="feature-box">
+
+<h3>⚡ Instant Recommendations</h3>
+<p>Get fashion suggestions instantly after uploading an image.</p>
+
+</div>
+
+<div class="feature-box">
+
+<h3>🎯 Trend Analysis</h3>
+<p>Helps users discover modern fashion trends.</p>
+
+</div>
+
+<div class="feature-box">
+
+<h3>🧠 AI Powered</h3>
+<p>Uses artificial intelligence to understand clothing patterns.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>AI Fashion Recommendation System | Academic Project</p>
+
+</footer>
+
+<script>
+
+function previewImage(event){
+
+const reader = new FileReader();
+
+reader.onload = function(){
+
+const preview = document.getElementById('preview');
+
+preview.src = reader.result;
+
+preview.style.display = "block";
+
+}
+
+reader.readAsDataURL(event.target.files[0]);
+
+}
+
+</script>
+
+</body>
+
+</html>
